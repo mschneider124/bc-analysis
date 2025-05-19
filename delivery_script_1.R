@@ -5,6 +5,7 @@ library(gophr)
 library(glitr)
 library(gisr)
 library(gagglr)
+library(lubridate)
 
 file_path <- "C:/Users/madel/Downloads/User data.xlsx"
 delivery_data <- read_excel(file_path)
@@ -22,5 +23,5 @@ delivery_data <- delivery_data %>%
 
 delivery_data<- delivery_data%>%
   mutate(bc_days_last_delivery = 28 * packs_per_delivery,
-         bc_runs_out = last_delivery_date + bc_days_last_delivery)
+         bc_runs_out = last_delivery_date + days(bc_days_last_delivery))
 
